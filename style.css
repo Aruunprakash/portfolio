@@ -449,7 +449,6 @@ h2 {
     font-size: 1.5rem;
     color: var(--text-primary);
 
-
 }
 
 .project-date {
@@ -657,4 +656,162 @@ h2 {
     width: 40px;
     height: 40px;
     background-color: rgba(44, 76, 59, 0.2);
+}
+
+/* --- Responsive Enhancements --- */
+
+/* Laptops & Small Desktops */
+@media (max-width: 1024px) {
+    .section-content {
+        max-width: 90%;
+    }
+
+    .editorial-item {
+        gap: 3rem;
+    }
+}
+
+/* --- ULTIMATE RESPONSIVE FIX --- */
+
+@media (max-width: 768px) {
+    :root {
+        --spacing-lg: 2rem;
+        --spacing-md: 1rem;
+    }
+
+    /* Fixed Navigation Fix */
+    .sticky-nav {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        padding: calc(1rem + env(safe-area-inset-top, 0px)) 0 1rem !important;
+        background: #F3EFE0 !important;
+        /* Solid background for visibility */
+        z-index: 9999 !important;
+        overflow: visible !important;
+        border-bottom: 1px solid rgba(44, 76, 59, 0.1);
+    }
+
+    .nav-links {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        gap: 2rem !important;
+        padding: 0 2rem !important;
+        justify-content: flex-start !important;
+        scrollbar-width: none;
+        list-style: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-links li {
+        flex: 0 0 auto;
+    }
+
+    .nav-links a {
+        font-size: 0.8rem !important;
+        font-weight: 700 !important;
+    }
+
+    /* Hero Overlap Fix */
+    .hero-content {
+        padding-top: 10rem !important;
+        /* Clear the nav bar */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        height: auto !important;
+        min-height: 100dvh !important;
+    }
+
+    .title-wrapper {
+        position: static !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        padding: 0 !important;
+        transform: none !important;
+    }
+
+    .title {
+        font-size: 3rem !important;
+        order: 2 !important;
+        margin: 1rem 0 !important;
+        position: static !important;
+    }
+
+    .top-subtitle,
+    .hero .subtitle,
+    .hero .corner-subtitle {
+        position: static !important;
+        transform: none !important;
+        width: auto !important;
+        text-align: center !important;
+        margin: 0.5rem 0 !important;
+        font-size: 0.9rem !important;
+        opacity: 1 !important;
+        display: block !important;
+    }
+
+    .top-subtitle {
+        order: 1 !important;
+    }
+
+    .hero .subtitle {
+        order: 3 !important;
+    }
+
+    .hero .corner-subtitle {
+        order: 4 !important;
+    }
+
+    /* Layout Grids */
+    .about-grid,
+    .skills-category-group,
+    .editorial-item {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+
+    .scroll-container {
+        height: 100dvh !important;
+        overflow-x: hidden !important;
+    }
+
+    /* Disable Custom Cursor on Mobile */
+    .custom-cursor {
+        display: none !important;
+    }
+
+    body {
+        cursor: auto !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2.5rem !important;
+    }
+
+    .hero-content {
+        padding-top: 12rem !important;
+    }
+}
+
+/* High-DPI screen adjustments */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+    body::before {
+        opacity: 0.02;
+        /* Even subtler grain on high-res screens */
+    }
 }
