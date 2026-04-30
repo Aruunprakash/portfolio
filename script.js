@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const observerOptions = {
         root: document.querySelector('.scroll-container'),
         rootMargin: '0px',
-        threshold: 0.3 // Trigger when 30% of the element is visible
+        threshold: 0.1 // More sensitive threshold
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
@@ -52,12 +52,28 @@ document.addEventListener('DOMContentLoaded', () => {
         cursor.style.top = e.clientY + 'px';
     });
 
-    // Add hover effect to interactive elements
+    // Hover effect for interactive elements
     const interactiveElements = document.querySelectorAll('a, button, .project-card, .skill-tag');
-
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
         el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+
+    // Scroll Effects (Progress Bar & Parallax Background)
+    const progressBar = document.querySelector('.scroll-progress');
+    const scrollContainerForEffects = document.querySelector('.scroll-container');
+
+    scrollContainerForEffects.addEventListener('scroll', () => {
+        const scrollTop = scrollContainerForEffects.scrollTop;
+        const scrollHeight = scrollContainerForEffects.scrollHeight - scrollContainerForEffects.clientHeight;
+        const scrollPercent = (scrollTop / scrollHeight) * 100;
+
+        // Update Progress Bar
+        if (progressBar) progressBar.style.width = scrollPercent + '%';
+
+        // Parallax Background Shift
+        const move = scrollTop * 0.05;
+        document.body.style.backgroundPosition = `0px ${move}px`;
     });
 
     // Smooth scrolling for navigation links
