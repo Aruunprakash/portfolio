@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     // Select all elements to animate
-    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeElements = document.querySelectorAll('.reveal-on-scroll');
     fadeElements.forEach(el => observer.observe(el));
 
     // Custom Cursor Logic
