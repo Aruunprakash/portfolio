@@ -209,7 +209,7 @@ h2 {
 }
 
 .detail-label {
-    width: 100px;
+    flex: 0 0 130px;
     font-weight: 700;
     color: var(--accent);
     text-transform: uppercase;
@@ -804,6 +804,19 @@ h2 {
 
     .hero-content {
         padding-top: 12rem !important;
+    }
+
+    .detail-item {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.2rem !important;
+        padding-bottom: 1rem !important;
+    }
+
+    .detail-label {
+        flex: none !important;
+        width: 100% !important;
+        font-size: 0.75rem !important;
     }
 }
 
