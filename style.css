@@ -68,6 +68,16 @@ body {
     animation: sectionReveal 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
+/* Timeline Specialization */
+.timeline-specialization {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0.2rem 0;
+}
+
 /* Base Section */
 .section {
     min-height: 100vh;
@@ -569,6 +579,12 @@ h2 {
 
 .social-link:hover {
     color: var(--accent);
+}
+
+.contact-email {
+    display: inline-block;
+    word-break: break-all;
+    max-width: 100%;
 }
 
 .footer {
