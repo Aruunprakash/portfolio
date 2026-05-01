@@ -84,9 +84,15 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetId = link.getAttribute('href');
             const targetSection = document.querySelector(targetId);
+            const scrollContainer = document.querySelector('.scroll-container');
+            const stickyNav = document.querySelector('.sticky-nav');
 
-            if (targetSection) {
-                targetSection.scrollIntoView({
+            if (targetSection && scrollContainer && stickyNav) {
+                const navHeight = stickyNav.offsetHeight;
+                const targetPosition = targetSection.offsetTop - (navHeight / 2); // Offset by half nav height for better centering
+                
+                scrollContainer.scrollTo({
+                    top: targetPosition,
                     behavior: 'smooth'
                 });
             }
