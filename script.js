@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
 
+
     // Scroll Effects (Progress Bar & Parallax Background)
     const progressBar = document.querySelector('.scroll-progress');
     const scrollContainerForEffects = document.querySelector('.scroll-container');
@@ -105,5 +106,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 changingText.style.opacity = 1;
             }, 500);
         }, 3000);
+    }
+
+    // Back to Top Logic
+    const backToTopBtn = document.getElementById("back-to-top");
+    const scrollContainerForBtn = document.querySelector('.scroll-container');
+    
+    if (backToTopBtn && scrollContainerForBtn) {
+        scrollContainerForBtn.addEventListener('scroll', () => {
+            if (scrollContainerForBtn.scrollTop > 500) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            scrollContainerForBtn.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     }
 });
