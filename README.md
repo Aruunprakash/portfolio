@@ -1,47 +1,44 @@
-# Arun M P | AI & Data Science Portfolio
+# AI & DATA SCIENCE PORTFOLIO | ARUN M P
 
-A premium, minimalist developer portfolio designed with a focus on editorial typography and cinematic motion. This site showcases my work in Data Science, Machine Learning, and Artificial Intelligence.
+[![GitHub Pages](https://img.shields.io/badge/Deployment-GitHub_Pages-2C4C3B?style=for-the-badge&logo=github)](https://aruunprakash.github.io/portfolio/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Arun_M_P-4A5D4E?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/aruunprakash/)
+[![Python](https://img.shields.io/badge/Python-3.x-1B2A1C?style=for-the-badge&logo=python)](https://www.python.org/)
 
-🔗 **Live Site:** [aruunmp.com](https://aruunmp.com)
-
----
-
-## 🎨 Design Philosophy
-
-This portfolio transitions away from standard "grid-based" developer sites into a high-end, magazine-inspired **Editorial Layout**. It prioritizes white space, bold typography, and a curated color palette (Sap Green & Beige) to create a sophisticated professional presence.
-
-### ✨ Key Features
-- **Cinematic Transitions**: Custom "Scale & Reveal" scroll animations that pop content into view with 2D motion and subtle blurs.
-- **Editorial Project Layout**: A typography-driven project section featuring large indexing and high-contrast titles.
-- **Interactive Cursor**: A custom-designed pointer that reacts to interactive elements across the site.
-- **Glassmorphism Navigation**: A sleek, fixed navigation bar with heavy backdrop-blur for a modern aesthetic.
-- **Fully Responsive**: Optimized for every screen size, from mobile devices to ultra-wide monitors.
-
-## 🛠 Tech Stack
-- **Structure:** Semantic HTML5
-- **Styling:** Vanilla CSS3 (Custom Design System)
-- **Logic:** Vanilla JavaScript (ES6+)
-- **Animations:** Intersection Observer API & CSS Keyframes
-
-## 📂 Project Highlights
-- **Stock Market Prediction:** Regression analysis and forecasting.
-- **AI-Powered Learning System:** Mastery-based cognitive modeling.
-- **Personal Finance Tracker:** Data integrity and defensive programming.
+A high-end, editorial-style developer portfolio designed for maximum impact. This project showcases an immersive web experience focused on **Data Science**, **Machine Learning**, and **Artificial Intelligence**.
 
 ---
 
-## 🚀 Getting Started
+## 🏛 Editorial Design System
+This portfolio moves beyond standard templates, utilizing a custom-built **Editorial Layout** inspired by high-end magazine design.
 
-To run this project locally:
-1. Clone the repository: `git clone https://github.com/Aruunprakash/portfolio.git`
-2. Open `index.html` in your favorite browser.
+*   **Cinematic Reveal**: Proprietary "Scale & Reveal" scroll animations using the Intersection Observer API.
+*   **Dynamic Typography**: Carefully balanced hierarchy with the **Inter** typeface and a curated Sap Green/Beige palette.
+*   **Touch-Optimized**: Fully responsive architecture supporting desktop, tablet, and mobile (dvh/svh) viewports.
+*   **Tactile Navigation**: Swipeable horizontal menu bar and a smart "Back-to-Top" scroll reveal system.
+
+---
+
+## 🛠 Technology Stack
+| Layer | Tech |
+| :--- | :--- |
+| **Foundation** | Semantic HTML5 & Modern DOM API |
+| **Visuals** | Vanilla CSS3 (Grid, Flexbox, Keyframes) |
+| **Logic** | ES6+ JavaScript |
+| **Motion** | Intersection Observer API |
 
 ---
 
-## 📬 Contact
-- **Email:** [aruunmp@gmail.com](mailto:aruunmp@gmail.com)
-- **LinkedIn:** [Arun M P](https://www.linkedin.com/in/aruunprakash/)
-- **GitHub:** [@Aruunprakash](https://github.com/Aruunprakash)
+## 🚀 Core Project Showcases
+1.  **Stock Market Forecaster**: Utilizing advanced regression algorithms to predict Tesla stock price movements with high accuracy.
+2.  **Cognitive Learning System**: Architecting an AI-powered adaptive platform using mastery-based behavioral modeling.
+3.  **Financial Integrity Engine**: Implementing a secure backend with defensive programming patterns for robust data tracking.
 
 ---
-*Created with ❤️ by Arun M P*
+
+## 📬 Professional Connectivity
+*   **Email**: [aruunmp@gmail.com](mailto:aruunmp@gmail.com)
+*   **LinkedIn**: [in/aruunprakash](https://www.linkedin.com/in/aruunprakash/)
+*   **GitHub**: [@Aruunprakash](https://github.com/Aruunprakash)
+
+---
+*Developed with a focus on minimalist aesthetics and professional performance.*
