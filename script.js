@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 changingText.textContent = words[wordIndex];
                 changingText.style.opacity = 1;
             }, 500);
-        }, 3000);
+        }, 2500);
     }
 
     // Back to Top Logic
