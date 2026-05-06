@@ -109,8 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 wordIndex = (wordIndex + 1) % words.length;
                 changingText.textContent = words[wordIndex];
+                // Force a small reflow to ensure text update is processed
+                void changingText.offsetWidth;
                 changingText.style.opacity = 1;
-            }, 500);
+            }, 600); 
         }, 3000);
     }
 
