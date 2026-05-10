@@ -426,6 +426,16 @@ h2 {
         padding: 1.25rem 0;
     }
     
+    .nav-links {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        mask-image: linear-gradient(to right, black 90%, transparent);
+    }
+    
+    .sticky-nav.nav-at-end .nav-links {
+        mask-image: none;
+    }
+
     .editorial-number {
         font-size: 1rem;
     }
@@ -714,6 +724,28 @@ h2 {
         z-index: 9999 !important;
         overflow: visible !important;
         border-bottom: 1px solid rgba(44, 76, 59, 0.1);
+    }
+
+    /* Mobile Nav Scroll Indicator */
+    .sticky-nav::after {
+        content: '→';
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 0.8rem;
+        color: var(--accent);
+        opacity: 0.5;
+        background: var(--bg-primary);
+        padding-left: 20px;
+        background: linear-gradient(to right, transparent, var(--bg-primary) 50%);
+        pointer-events: none;
+        z-index: 10000;
+        transition: opacity 0.3s ease;
+    }
+
+    .sticky-nav.nav-at-end::after {
+        opacity: 0;
     }
 
     .nav-links {

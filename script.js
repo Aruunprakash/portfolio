@@ -136,4 +136,20 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Mobile Nav Scroll Indicator Logic
+    const navLinksContainer = document.querySelector('.nav-links');
+    const stickyNav = document.querySelector('.sticky-nav');
+    
+    if (navLinksContainer && stickyNav) {
+        navLinksContainer.addEventListener('scroll', () => {
+            const maxScroll = navLinksContainer.scrollWidth - navLinksContainer.clientWidth;
+            // If scrolled near the end, hide the arrow/fade
+            if (navLinksContainer.scrollLeft >= maxScroll - 20) {
+                stickyNav.classList.add('nav-at-end');
+            } else {
+                stickyNav.classList.remove('nav-at-end');
+            }
+        });
+    }
 });
