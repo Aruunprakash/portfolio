@@ -1,155 +1,154 @@
-// Disable native scroll restoration before DOM loads
-if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Remove URL hash on load to prevent browser from jumping to sections
-    if (window.location.hash) {
-        window.history.replaceState(null, null, window.location.pathname);
-    }
+    // Progressive Reveal Enhancement: Add active class to body
+    // This activates CSS hidden states for scroll reveals, guaranteeing content visibility even if JS fails
+    document.body.classList.add('js-active');
 
-    // Force scroll container to top
-    const scrollContainer = document.querySelector('.scroll-container');
-    if (scrollContainer) {
-        scrollContainer.scrollTop = 0;
+    // Custom Cursor Logic
+    const cursor = document.querySelector('.custom-cursor');
+    
+    if (cursor) {
+        // Track mouse position
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
 
-        // Also reset on beforeunload so the browser saves state as 0
-        window.addEventListener('beforeunload', () => {
-            scrollContainer.scrollTop = 0;
+        // Hover expansions for links, buttons, and ovals
+        const hoverables = document.querySelectorAll('a, button, .toc-oval-wrapper, .experience-card, .project-card, .skill-tag, .social-square-btn');
+        hoverables.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
         });
     }
 
-    // Intersection Observer for scroll animations
+    // Sticky Navigation Dark Mode & Active Links Observer
+    const nav = document.getElementById('main-nav');
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    // Intersection Observer for detecting visible sections
     const observerOptions = {
-        root: document.querySelector('.scroll-container'),
-        rootMargin: '0px',
-        threshold: 0.1 // More sensitive threshold
+        root: null,
+        rootMargin: '-20% 0px -60% 0px', // Trigger when section occupies the sweet spot of viewport
+        threshold: 0
     };
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                // Optional: stop observing once animated in
-                // observer.unobserve(entry.target);
-            } else {
-                // Remove to allow re-animating when scrolling back up
-                entry.target.classList.remove('visible');
+                const id = entry.target.getAttribute('id');
+                
+                // 1. Manage Navigation Active State Highlight
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                    }
+                });
+
+                // 2. Manage Sticky Nav Color Theme (Dark Mode on Blue Backgrounds)
+                if (id === 'cover' || id === 'contact') {
+                    nav.classList.add('dark-mode');
+                } else {
+                    nav.classList.remove('dark-mode');
+                }
             }
         });
     }, observerOptions);
 
-    // Select all elements to animate
-    const fadeElements = document.querySelectorAll('.reveal-on-scroll');
-    fadeElements.forEach(el => observer.observe(el));
+    sections.forEach(section => sectionObserver.observe(section));
 
-    // Custom Cursor Logic
-    const cursor = document.querySelector('.custom-cursor');
-
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-    });
-
-    // Hover effect for interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .project-card, .skill-tag');
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-    });
-
-
-    // Scroll Effects (Progress Bar & Parallax Background)
-    const progressBar = document.querySelector('.scroll-progress');
-    const scrollContainerForEffects = document.querySelector('.scroll-container');
-
-    scrollContainerForEffects.addEventListener('scroll', () => {
-        const scrollTop = scrollContainerForEffects.scrollTop;
-        const scrollHeight = scrollContainerForEffects.scrollHeight - scrollContainerForEffects.clientHeight;
-        const scrollPercent = (scrollTop / scrollHeight) * 100;
-
-        // Update Progress Bar
-        if (progressBar) progressBar.style.width = scrollPercent + '%';
-
-        // Parallax Background Shift
-        const move = scrollTop * 0.05;
-        document.body.style.backgroundPosition = `0px ${move}px`;
-    });
-
-    // Smooth scrolling for navigation links
-    const navLinks = document.querySelectorAll('.nav-links a');
+    // Smooth Scroll for Navigation Links
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const targetId = link.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-            const scrollContainer = document.querySelector('.scroll-container');
-            const stickyNav = document.querySelector('.sticky-nav');
-
-            if (targetSection && scrollContainer && stickyNav) {
-                const navHeight = stickyNav.offsetHeight;
-                const targetPosition = targetSection.offsetTop - (navHeight / 2); // Offset by half nav height for better centering
-                
-                scrollContainer.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
+            
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
                 });
             }
         });
     });
 
-    // Changing Text Logic
-    const changingText = document.querySelector('.changing-text');
-    if (changingText) {
-        const words = ["DATA SCIENCE", "MACHINE LEARNING"];
-        let wordIndex = 0;
-        setInterval(() => {
-            changingText.style.opacity = 0;
-            setTimeout(() => {
-                wordIndex = (wordIndex + 1) % words.length;
-                changingText.textContent = words[wordIndex];
-                // Force a small reflow to ensure text update is processed
-                void changingText.offsetWidth;
-                changingText.style.opacity = 1;
-            }, 600); 
-        }, 3000);
-    }
-
-    // Back to Top Logic
-    const backToTopBtn = document.getElementById("back-to-top");
-    const scrollContainerForBtn = document.querySelector('.scroll-container');
-    
-    if (backToTopBtn && scrollContainerForBtn) {
-        scrollContainerForBtn.addEventListener('scroll', () => {
-            if (scrollContainerForBtn.scrollTop > 500) {
-                backToTopBtn.style.display = "block";
-            } else {
-                backToTopBtn.style.display = "none";
+    // Scroll to Top Circular Button
+    const scrollTopBtn = document.getElementById('scroll-to-top-button');
+    if (scrollTopBtn) {
+        scrollTopBtn.addEventListener('click', () => {
+            const coverSection = document.getElementById('cover');
+            if (coverSection) {
+                coverSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }
         });
+    }
 
-        backToTopBtn.addEventListener('click', () => {
-            scrollContainerForBtn.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+    // Contact Form Submission Handler
+    const contactForm = document.getElementById('contact-form-element');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const submitBtn = contactForm.querySelector('.form-submit-teal-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'SENDING...';
+            submitBtn.disabled = true;
+            
+            // Simulate message sending
+            setTimeout(() => {
+                alert('Thank you, Arun M P has received your message!');
+                contactForm.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 1200);
+        });
+    }
+
+    // Table of Contents SVG Interaction
+    const ovals = document.querySelectorAll('.toc-oval-wrapper');
+    const path = document.querySelector('.toc-path');
+
+    if (ovals && path) {
+        ovals.forEach(oval => {
+            oval.addEventListener('mouseenter', () => {
+                // Speed up dash animation and make path solid blue
+                path.style.animationDuration = '8s';
+                path.style.strokeWidth = '3.5px';
+            });
+            
+            oval.addEventListener('mouseleave', () => {
+                // Revert to original slow dash
+                path.style.animationDuration = '30s';
+                path.style.strokeWidth = '2.5px';
             });
         });
     }
 
-    // Mobile Nav Scroll Indicator Logic
-    const navLinksContainer = document.querySelector('.nav-links');
-    const stickyNav = document.querySelector('.sticky-nav');
-    
-    if (navLinksContainer && stickyNav) {
-        navLinksContainer.addEventListener('scroll', () => {
-            const maxScroll = navLinksContainer.scrollWidth - navLinksContainer.clientWidth;
-            // If scrolled near the end, hide the arrow/fade
-            if (navLinksContainer.scrollLeft >= maxScroll - 20) {
-                stickyNav.classList.add('nav-at-end');
-            } else {
-                stickyNav.classList.remove('nav-at-end');
+    // Scroll animation for reveals (Fade in sections on scroll)
+    const revealOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.05
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
             }
         });
-    }
+    }, revealOptions);
+
+    const revealElements = document.querySelectorAll('.experience-card, .project-card, .publication-box, .cert-item, .edu-item, .skills-category, .contact-left-info, .contact-right-form');
+    
+    revealElements.forEach(el => {
+        el.classList.add('reveal-item');
+        revealObserver.observe(el);
+    });
 });
