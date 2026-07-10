@@ -226,7 +226,6 @@ body::after {
 }
 
 /* Progressive Reveals (Preventing Blank States) */
-/* By default, everything is visible. When body gets '.js-active', we transition them */
 body.js-active .reveal-item {
     opacity: 0;
     transform: translateY(30px);
@@ -619,43 +618,12 @@ body.js-active .reveal-item.revealed {
     font-weight: 500;
     line-height: 1.7;
     color: #222222;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .profile-desc strong {
     color: var(--primary-blue);
     font-weight: 800;
-}
-
-.profile-summary-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-}
-
-.profile-summary-section h4 {
-    font-family: var(--font-title);
-    font-size: 1.8rem;
-    color: var(--primary-blue);
-    border-bottom: var(--border-thickness) solid var(--primary-blue);
-    padding-bottom: 0.4rem;
-    margin-bottom: 1rem;
-    letter-spacing: 0.02em;
-}
-
-.profile-summary-section ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-}
-
-.profile-summary-section li {
-    font-size: 0.95rem;
-}
-
-.profile-summary-section strong {
-    font-weight: 700;
 }
 
 /* ==================== SLIDE 4: EXPERIENCE ==================== */
@@ -1345,11 +1313,32 @@ body.js-active .reveal-item.revealed {
     }
     
     .sticky-nav {
-        padding: 1rem var(--spacing-md);
+        padding: 0.8rem var(--spacing-md);
+    }
+    
+    .nav-container {
+        flex-direction: column;
+        gap: 0.4rem;
+        align-items: center;
     }
     
     .nav-links {
-        gap: 1rem;
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        width: 100%;
+        justify-content: flex-start;
+        padding: 0.2rem 1rem 0.4rem;
+        gap: 1.2rem;
+        scrollbar-width: none; /* Firefox */
+    }
+    
+    .nav-links::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+    
+    .nav-links li {
+        flex: 0 0 auto;
     }
     
     .nav-links a {

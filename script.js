@@ -1,4 +1,20 @@
+// Force page scroll to top on reload/refresh
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
+    const coverSection = document.getElementById('cover');
+    if (coverSection) {
+        coverSection.scrollIntoView({ behavior: 'auto', block: 'start' });
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
+    // Force immediate scroll position reset on load
+    window.scrollTo(0, 0);
+
     // Progressive Reveal Enhancement: Add active class to body
     // This activates CSS hidden states for scroll reveals, guaranteeing content visibility even if JS fails
     document.body.classList.add('js-active');
