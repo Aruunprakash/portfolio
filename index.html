@@ -4,184 +4,371 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <meta name="description" content="Professional portfolio showcasing projects and achievements.">
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Arun M P | Data Science Portfolio</title>
+    <meta name="description" content="Portfolio of Arun M P, a Data Science and AI/ML fresher showcasing analytics projects, internships, and research publications.">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <!-- Custom Cursor -->
     <div class="custom-cursor"></div>
+
     <!-- Sticky Navigation Bar -->
-    <nav class="sticky-nav">
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+    <nav class="sticky-nav" id="main-nav">
+        <div class="nav-container">
+            <a href="#cover" class="nav-logo">ARUN M P</a>
+            <ul class="nav-links">
+                <li><a href="#toc">Index</a></li>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#achievements">Research</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <div class="scroll-container">
-
-        <!-- Hero Section -->
-        <section class="section hero" id="home">
-            <div class="hero-content reveal-on-scroll">
-                <div class="title-wrapper">
-                    <h1 class="title">ARUN M P</h1>
-                    <p class="subtitle changing-text">DATA SCIENCE</p>
-                    <p class="corner-subtitle">PORTFOLIO</p>
+    <!-- Slide 1: Cover Section -->
+    <section class="section hero" id="cover">
+        <div class="hero-header">
+            <span>Arun M P // Data Science</span>
+            <span>2026 Edition</span>
+        </div>
+        <div class="hero-center">
+            <div class="logo-box">
+                <div class="tilted-badge">DATA SCIENCE</div>
+                <h1>PORTFOLIO</h1>
+                <div class="logo-box-footer">
+                    <span>AI / ML FRESHER</span>
+                    <div class="footer-symbol"></div>
+                    <span>CALICUT, INDIA</span>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- About Section -->
-        <section class="section about" id="about">
-            <div class="section-content reveal-on-scroll">
-                <h2>About Me</h2>
-                <div class="about-grid">
-                    <!-- Left Side: Basic Details -->
-                    <div class="about-left">
-                        <p class="about-summary">Aspiring Data Scientist and AIML Engineer specializing in the
-                            development of scalable, high-impact data solutions. Proficient in advanced Pythonic
-                            analysis and predictive modeling, with a core focus on architecting adaptive systems through
-                            behavioral analytics and statistical mathematics. Committed to leveraging artificial
-                            intelligence to derive actionable insights and solve complex real-world challenges.</p>
+    <!-- Slide 2: Table of Contents -->
+    <section class="section toc" id="toc">
+        <div class="section-content">
+            <h2 class="section-title">TABLE OF <span class="serif-italic">CONTENT</span></h2>
+            <div class="toc-grid">
+                <!-- SVG Diagram Column -->
+                <div class="toc-diagram-container">
+                    <svg class="toc-svg" viewBox="0 0 700 500" preserveAspectRatio="none">
+                        <path class="toc-path" d="M 230 80 C 500 80, 650 200, 580 250 C 500 300, 150 280, 180 425" />
+                    </svg>
 
-                        <div class="basic-details">
-                            <div class="detail-item">
-                                <span class="detail-label">Name</span>
-                                <span class="detail-value">Arun M P</span>
+                    <div class="toc-oval-wrapper oval-work" onclick="document.getElementById('experience').scrollIntoView({behavior: 'smooth'})">
+                        <span>ANALYZE</span>
+                    </div>
+                    <div class="toc-oval-wrapper oval-debt" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+                        <span>PREDICT</span>
+                    </div>
+                    <div class="toc-oval-wrapper oval-cry" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                        <span>REPEAT</span>
+                    </div>
+                </div>
+
+                <!-- TOC Menu Column -->
+                <ul class="toc-menu">
+                    <li class="toc-item">
+                        <a href="#profile" class="toc-link">
+                            <span class="toc-number">01</span>
+                            <div class="toc-label-container">
+                                <span class="toc-title">Profile</span>
+                                <span class="toc-subtitle">Who I am & Technical overview</span>
                             </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Location</span>
-                                <span class="detail-value">Calicut, Kerala</span>
+                        </a>
+                    </li>
+                    <li class="toc-item">
+                        <a href="#experience" class="toc-link">
+                            <span class="toc-number">02</span>
+                            <div class="toc-label-container">
+                                <span class="toc-title">Experience</span>
+                                <span class="toc-subtitle">WizzyBox & Corizo internships</span>
                             </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Nationality</span>
-                                <span class="detail-value">India</span>
+                        </a>
+                    </li>
+                    <li class="toc-item">
+                        <a href="#projects" class="toc-link">
+                            <span class="toc-number">03</span>
+                            <div class="toc-label-container">
+                                <span class="toc-title">Selected Projects</span>
+                                <span class="toc-subtitle">ML classification & valuation engines</span>
                             </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Email</span>
-                                <span class="detail-value"><a href="mailto:aruunmp@gmail.com" target="_top"
-                                        style="color: inherit; text-decoration: none;">aruunmp@gmail.com</a></span>
+                        </a>
+                    </li>
+                    <li class="toc-item">
+                        <a href="#achievements" class="toc-link">
+                            <span class="toc-number">04</span>
+                            <div class="toc-label-container">
+                                <span class="toc-title">Achievements</span>
+                                <span class="toc-subtitle">Publications & Certifications</span>
                             </div>
+                        </a>
+                    </li>
+                    <li class="toc-item">
+                        <a href="#education" class="toc-link">
+                            <span class="toc-number">05</span>
+                            <div class="toc-label-container">
+                                <span class="toc-title">Education</span>
+                                <span class="toc-subtitle">Academic timeline</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="toc-item">
+                        <a href="#contact" class="toc-link">
+                            <span class="toc-number">06</span>
+                            <div class="toc-label-container">
+                                <span class="toc-title">Get in touch</span>
+                                <span class="toc-subtitle">Let's connect & collaborate</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: About / Profile -->
+    <section class="section profile" id="profile">
+        <div class="section-content">
+            <h2 class="section-title">01 / <span class="serif-italic">PROFILE</span></h2>
+            <div class="profile-grid">
+                <!-- Left Frame: Empty Photo Placeholder -->
+                <div class="profile-left">
+                    <div class="profile-contact-header">
+                        <span>E-MAIL: <a href="mailto:aruunmp@gmail.com">aruunmp@gmail.com</a> // LINKEDIN: <a href="https://linkedin.com/in/aruunprakash" target="_blank" rel="noopener noreferrer">Arun M P</a></span>
+                    </div>
+                    <div class="profile-photo-container">
+                        <img src="assets/profile.jpg" alt="Arun M P" class="profile-photo-img">
+                    </div>
+                </div>
+
+                <!-- Right Frame: Intro & Bio -->
+                <div class="profile-right">
+                    <div class="hello-badge">
+                        <span>HELLO</span>
+                    </div>
+                    <p class="profile-desc">
+                        My name is <strong>Arun M P</strong>. I am a highly motivated <strong>Data Science fresher</strong> skilled in Python, NumPy, Pandas, Matplotlib, Scikit-Learn , Tensorflow and SQL, with hands-on experience in data analysis, predictive modeling, and AI/ML architectures. I am eager to apply my mathematical foundation and analytical skills to derive deep insights and build impactful, data-driven solutions to solve complex real-world challenges.
+                    </p>
+                    <p class="profile-desc">
+                        My background specializes in developing scalable, high-impact data solutions, utilizing advanced statistical analysis, machine learning basics, and engineering adaptive cognitive systems.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4: Experience Detail -->
+    <section class="section experience" id="experience">
+        <div class="section-content">
+            <h2 class="section-title">02 / <span class="serif-italic">EXPERIENCE</span></h2>
+            <div class="experience-container">
+                <!-- WizzyBox -->
+                <div class="experience-card">
+                    <div class="experience-card-header">
+                        <h3 class="exp-role">AI/ML Intern</h3>
+                        <div class="exp-company">WizzyBox Pvt. Ltd</div>
+                        <div class="exp-meta">
+                            <span>Bangalore, India</span>
+                            <span>Jan '26 — Apr '26</span>
                         </div>
                     </div>
+                    <div class="experience-card-body">
+                        <p>Built deep foundations in statistical modeling (mean, variance, standard deviation, z-score, MAD, log-normal distribution).</p>
+                        <p>Applied complex mathematical concepts like logarithms and cosine similarity in multidimensional data analysis.</p>
+                        <p>Learned machine learning basics, supervised learning methodologies, and data preprocessing pipelines.</p>
+                    </div>
+                </div>
 
-                    <!-- Right Side: Education Timeline -->
-                    <div class="about-right">
-                        <h3 class="timeline-title">Education</h3>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-content">
-                                    <h4>Bachelor of Technology</h4>
-                                    <p class="timeline-specialization">Artificial Intelligence and Machine Learning</p>
-                                    <p class="timeline-date">2022 - 2026</p>
-                                    <p class="timeline-desc">Srinivas University Institute of Engineering and
-                                        Technology, Mangalore<br>CGPA: 8.46</p>
-                                </div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-content">
-                                    <h4>Higher Secondary</h4>
-                                    <p class="timeline-date">Graduated 2022</p>
-                                    <p class="timeline-desc">Jawahar Navodaya Vidyalaya, Mahe<br>Score: 81.2%</p>
-                                </div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-content">
-                                    <h4>Secondary Education</h4>
-                                    <p class="timeline-date">Graduated 2020</p>
-                                    <p class="timeline-desc">Jawahar Navodaya Vidyalaya, Mahe<br>Score: 90%</p>
-                                </div>
-                            </div>
+                <!-- Corizo -->
+                <div class="experience-card">
+                    <div class="experience-card-header">
+                        <h3 class="exp-role">ML Intern</h3>
+                        <div class="exp-company">Corizo</div>
+                        <div class="exp-meta">
+                            <span>Bangalore (Remote)</span>
+                            <span>Jun '25 — Aug '25</span>
                         </div>
+                    </div>
+                    <div class="experience-card-body">
+                        <p>Developed a stock price forecasting model using Python, leveraging Scikit-Learn and Pandas.</p>
+                        <p>Benchmarked multiple regression algorithms to optimize and achieve high predictive accuracy across diverse financial datasets.</p>
+                        <p>Gained practical experience in remote collaboration, agile development pipelines, and version control workflows.</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Experience Section -->
-        <section class="section experience" id="experience">
-            <div class="section-content reveal-on-scroll">
-                <h2>Experience</h2>
-                <div class="timeline" style="max-width: 800px; margin: 0 auto;">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h4>AI/ML Intern</h4>
-                            <p class="timeline-date">Jan '26 — Apr '26 | WizzyBox Pvt. Ltd, Bangalore</p>
-                            <p class="timeline-desc">
-                                • Strengthening expertise in statistical analysis (mean, variance, standard deviation,
-                                z-score, MAD, log-normal distribution)<br>
-                                • Utilizing complex mathematical models like cosine similarity for high-dimensional data
-                                analysis<br>
-                                • Implementing core machine learning paradigms and advanced data preprocessing pipelines
-                            </p>
+    <!-- Slide 5: Projects Showcase -->
+    <section class="section projects" id="projects">
+        <div class="section-content">
+            <h2 class="section-title">03 / <span class="serif-italic">PROJECTS</span></h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <span class="project-num">01</span>
+                    <div class="project-header">
+                        <span class="project-date">Jun '26</span>
+                        <h3>SPORTVISION AI</h3>
+                    </div>
+                    <p class="project-desc">An end-to-end machine learning sports-person image classification pipeline featuring automated image preprocessing, structural feature engineering via 2D Wavelet Decompositions, and multi-class inference.</p>
+                    <a href="https://github.com/Aruunprakash/SportVision-Sports-person-image-classifier.git" class="project-link-btn" target="_blank" rel="noopener noreferrer">View Repo ↗</a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <span class="project-num">02</span>
+                    <div class="project-header">
+                        <span class="project-date">Jun '26</span>
+                        <h3>AURAPREDICT</h3>
+                    </div>
+                    <p class="project-desc">A full-stack ML web application built using Python and Flask that analyzes over 13,000 records to deliver real-time property price valuations across 241 Bangalore localities.</p>
+                    <a href="https://github.com/Aruunprakash/AuraPredict-Real-Estate-Price-Prediction-Platform.git" class="project-link-btn" target="_blank" rel="noopener noreferrer">View Repo ↗</a>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <span class="project-num">03</span>
+                    <div class="project-header">
+                        <span class="project-date">Jan-Mar '26</span>
+                        <h3>COGNITIVE LEARNING</h3>
+                    </div>
+                    <p class="project-desc">Conceptualizing an AI-powered adaptive learning framework using mastery-based modeling and behavioral analytics to personalize content and optimize learning outcomes.</p>
+                    <a href="https://github.com/Aruunprakash/AI-Powered-Learning.git" class="project-link-btn" target="_blank" rel="noopener noreferrer">View Repo ↗</a>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <span class="project-num">04</span>
+                    <div class="project-header">
+                        <span class="project-date">May '26</span>
+                        <h3>ENERGY TRACKER</h3>
+                    </div>
+                    <p class="project-desc">A Python-powered simulation and analysis tool for monitoring renewable energy shares across various global regions, developed using NumPy, Pandas, and Matplotlib.</p>
+                    <a href="https://github.com/Aruunprakash/The-Global-Green-Energy-Transition-Tracker.git" class="project-link-btn" target="_blank" rel="noopener noreferrer">View Repo ↗</a>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card">
+                    <span class="project-num">05</span>
+                    <div class="project-header">
+                        <span class="project-date">Apr '26</span>
+                        <h3>FINANCE TRACKER</h3>
+                    </div>
+                    <p class="project-desc">A secure personal finance tracker implementing defensive coding patterns and custom data structures to maintain financial transaction logs and ensure high data integrity.</p>
+                    <a href="https://github.com/Aruunprakash/personal_finance_tracker.git" class="project-link-btn" target="_blank" rel="noopener noreferrer">View Repo ↗</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 6: Achievements (Publications & Certifications) -->
+    <section class="section achievements" id="achievements">
+        <div class="section-content">
+            <h2 class="section-title">04 / <span class="serif-italic">ACHIEVEMENTS</span></h2>
+            <div class="achievements-grid">
+                <!-- Publications -->
+                <div class="publication-box">
+                    <span class="serif-italic" style="color: var(--primary-blue); font-size: 1.2rem; display: block; margin-bottom: 0.8rem;">CONFERENCE PUBLICATION</span>
+                    <h3 class="pub-title">AI-POWERED COGNITIVE ADAPTIVE LEARNING SYSTEM</h3>
+                    <div class="pub-conference">International Conference on Emerging Synergy Science and Technology 2026 (Apr '26)</div>
+                    <p class="pub-desc">
+                        Addressed critical limitations of traditional educational setups by designing an AI-driven adaptive system featuring real-time focus analysis. The model utilizes custom behavioral metrics to enable highly personalized learning paths based on active user performance and attention metrics.
+                    </p>
+                </div>
+
+                <!-- Certifications -->
+                <div class="certifications-container">
+                    <span class="serif-italic" style="color: var(--primary-blue); font-size: 1.2rem; display: block; margin-bottom: 1.5rem;">CERTIFICATIONS</span>
+                    <ul class="certifications-list">
+                        <li class="cert-item">
+                            <h3 class="cert-name">Data Science and Machine Learning</h3>
+                            <span class="cert-issuer">YBI Foundation</span>
+                        </li>
+                        <li class="cert-item">
+                            <h3 class="cert-name">Python Foundation</h3>
+                            <span class="cert-issuer">Ethotech Academy</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 7: Education & Skills -->
+    <section class="section education" id="education">
+        <div class="section-content">
+            <h2 class="section-title">05 / <span class="serif-italic">EDUCATION & TECH</span></h2>
+            <div class="edu-skills-grid">
+                <!-- Education Timeline -->
+                <div class="edu-timeline">
+                    <!-- College -->
+                    <div class="edu-item">
+                        <div class="edu-dot"></div>
+                        <h3 class="edu-degree">B.Tech in Artificial Intelligence</h3>
+                        <div class="edu-school">Srinivas University Institute of Engineering and Technology</div>
+                        <div class="edu-meta">
+                            <span>Mangaluru, India</span>
+                            <span>GPA: 8.46 CGPA // Apr '26</span>
                         </div>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h4>Machine Learning Intern</h4>
-                            <p class="timeline-date">Jun '25 — Aug '25 | Corizo, Remote</p>
-                            <p class="timeline-desc">
-                                • Leading the development of stock price forecasting models using Python (Scikit-Learn,
-                                Pandas)<br>
-                                • Benchmarking multiple regression algorithms to optimize predictive performance across
-                                heterogeneous datasets.
-                            </p>
+                    <!-- JNV 12 -->
+                    <div class="edu-item">
+                        <div class="edu-dot"></div>
+                        <h3 class="edu-degree">Higher Secondary (Class XII)</h3>
+                        <div class="edu-school">Jawahar Navodaya Vidyalaya</div>
+                        <div class="edu-meta">
+                            <span>Mahe, India</span>
+                            <span>Score: 81.2% // Jun '22</span>
+                        </div>
+                    </div>
+                    <!-- JNV 10 -->
+                    <div class="edu-item">
+                        <div class="edu-dot"></div>
+                        <h3 class="edu-degree">Secondary Education (Class X)</h3>
+                        <div class="edu-school">Jawahar Navodaya Vidyalaya</div>
+                        <div class="edu-meta">
+                            <span>Mahe, India</span>
+                            <span>Score: 89.8% // May '20</span>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Skills Section -->
-        <section class="section skills" id="skills">
-            <div class="section-content reveal-on-scroll">
-                <h2>Tech Stack</h2>
+                <!-- Skills Categorized -->
                 <div class="skills-category-group">
+                    <!-- Programming -->
                     <div class="skills-category">
-                        <h3>Programming</h3>
+                        <h3>PROGRAMMING LANGUAGES</h3>
                         <div class="skills-container">
                             <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Java</span>
-                            <span class="skill-tag">C</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">MySQL</span>
                         </div>
                     </div>
+                    <!-- Libraries -->
                     <div class="skills-category">
-                        <h3>Libraries</h3>
+                        <h3>LIBRARIES & TOOLS</h3>
                         <div class="skills-container">
                             <span class="skill-tag">NumPy</span>
                             <span class="skill-tag">Pandas</span>
                             <span class="skill-tag">Matplotlib</span>
                             <span class="skill-tag">Seaborn</span>
                             <span class="skill-tag">Scikit-Learn</span>
-                        </div>
-                    </div>
-                    <div class="skills-category">
-                        <h3>Databases & Tools</h3>
-                        <div class="skills-container">
-                            <span class="skill-tag">MySQL</span>
-                            <span class="skill-tag">SQL</span>
-                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">Keras</span>
                             <span class="skill-tag">Git</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">Flask</span>
                         </div>
                     </div>
+                    <!-- Languages -->
                     <div class="skills-category">
-                        <h3>Languages</h3>
+                        <h3>LANGUAGES</h3>
                         <div class="skills-container">
                             <span class="skill-tag">English</span>
                             <span class="skill-tag">Malayalam</span>
@@ -190,109 +377,66 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Projects Section -->
-        <section class="section projects" id="projects">
-            <div class="section-content reveal-on-scroll">
-                <h2>Selected Projects</h2>
-                <div class="projects-editorial">
-                    <!-- Project 01 -->
-                    <div class="editorial-item">
-                        <span class="editorial-number">01</span>
-                        <div class="editorial-content">
-                            <span class="editorial-date">May '26</span>
-                            <h3><a href="https://github.com/Aruunprakash/The-Global-Green-Energy-Transition-Tracker.git" class="project-link"
-                                    target="_blank" rel="noopener noreferrer">The Global Green Energy Transition Tracker</a></h3>
-                            <p class="editorial-desc">A Python-powered simulation and analysis tool for monitoring renewable energy shares using NumPy, Pandas, and Matplotlib.</p>
-                        </div>
+    <!-- Slide 8: Contact Section -->
+    <section class="section contact" id="contact">
+        <!-- SVG Background Metallic "06" -->
+        <div class="contact-bg-number-container">
+            <svg class="contact-bg-number-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <text x="50" y="52" dominant-baseline="middle" text-anchor="middle" class="contact-bg-text">06</text>
+            </svg>
+        </div>
+
+        <div class="section-content contact-content-wrapper">
+            <div class="contact-header-wrapper">
+                <h2 class="section-title contact-title">CONTACT</h2>
+            </div>
+
+            <div class="contact-split-grid contact-split-grid-single">
+                <!-- Details & Socials -->
+                <div class="contact-left-info">
+                    <p class="contact-form-desc">
+                        Have a project in mind, a role to fill, or just want to talk shop about AI, data science, or engineering? Click below to email me directly — I'll get back to you as soon as I can.
+                    </p>
+
+                    <div class="contact-badge-status">
+                        <span class="badge-dot"></span>
+                        <span class="badge-text">Available for opportunities & collaboration</span>
                     </div>
-                    <!-- Project 02 -->
-                    <div class="editorial-item">
-                        <span class="editorial-number">02</span>
-                        <div class="editorial-content">
-                            <span class="editorial-date">Apr '26</span>
-                            <h3><a href="https://github.com/Aruunprakash/personal_finance_tracker.git"
-                                    class="project-link" target="_blank" rel="noopener noreferrer">Finance Tracker</a>
-                            </h3>
-                            <p class="editorial-desc">Implementing a secure backend with defensive programming for
-                                robust data integrity.</p>
-                        </div>
-                    </div>
-                    <!-- Project 03 -->
-                    <div class="editorial-item">
-                        <span class="editorial-number">03</span>
-                        <div class="editorial-content">
-                            <span class="editorial-date">Jan 26'-Mar '26</span>
-                            <h3><a href="https://github.com/Aruunprakash/AI-Powered-Learning.git" class="project-link"
-                                    target="_blank" rel="noopener noreferrer">Cognitive Learning System</a></h3>
-                            <p class="editorial-desc">Architecting an AI platform using behavioral analytics to deliver
-                                personalized content.</p>
-                        </div>
+
+                    <!-- Primary CTA: opens the visitor's mail client directly -->
+                    <a href="mailto:aruunmp@gmail.com?subject=Let's%20connect" class="contact-email-cta">
+                        <svg class="email-dashed-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <span>aruunmp@gmail.com</span>
+                        <span class="contact-email-cta-arrow">↗</span>
+                    </a>
+
+                    <div class="contact-social-squares">
+                        <a href="https://linkedin.com/in/aruunprakash" class="social-square-btn" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                            <span>IN</span>
+                        </a>
+                        <a href="https://github.com/Aruunprakash" class="social-square-btn" target="_blank" rel="noopener noreferrer" title="GitHub">
+                            <span>GH</span>
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Certifications & Publications Section -->
-        <section class="section achievements" id="certifications">
-            <div class="section-content reveal-on-scroll">
-                <h2>Certifications & Publications</h2>
-                <div class="achievements-grid" style="max-width: 800px; margin: 0 auto; text-align: left;">
-                    <div class="timeline">
-                        <h3 class="timeline-title" style="font-size: 1.2rem; margin-top: 1rem;">Certifications</h3>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h4>Data Science and Machine Learning</h4>
-                                <p class="timeline-desc">YBI Foundation</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h4>Python Foundation</h4>
-                                <p class="timeline-desc">Ethotech Academy</p>
-                            </div>
-                        </div>
+            <!-- Float Scroll to Top Bottom Right -->
+            <button class="scroll-top-circular-btn" id="scroll-to-top-button" title="Go to top">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"/>
+                </svg>
+            </button>
 
-                        <h3 class="timeline-title" style="font-size: 1.2rem; margin-top: 3rem;">Publications</h3>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h4>AI-POWERED COGNITIVE ADAPTIVE LEARNING SYSTEM</h4>
-                                <p class="timeline-date">Apr '26 | INTERNATIONAL CONFERENCE ON EMERGING SYNERGY SCIENCE
-                                    AND TECHNOLOGY 2026</p>
-                                <p class="timeline-desc">Addressed limitations of traditional learning by developing an
-                                    AI-driven adaptive system with focus analysis, enabling personalized learning based
-                                    on performance and student attention.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="section contact" id="contact">
-            <div class="section-content reveal-on-scroll">
-                <h2>Get in touch</h2>
-                <p class="contact-desc">Let's turn data into intelligence, together.</p>
-                <div class="contact-methods" style="margin-bottom: 2rem;">
-                    <a href="mailto:aruunmp@gmail.com" class="contact-email" target="_top">aruunmp@gmail.com</a>
-                </div>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/aruunprakash/" class="social-link">LinkedIn</a>
-                    <a href="https://github.com/Aruunprakash" class="social-link">GitHub</a>
-                </div>
-                <footer class="footer">
-                    <p>&copy; 2026 Arun. All rights reserved.</p>
-                </footer>
-            </div>
-        </section>
-    </div>
-
-    <button id="back-to-top" title="Go to top">↑</button>
+            <p class="footer-bottom-copy">&copy; 2026 Arun M P. All rights reserved.</p>
+        </div>
+    </section>
 
     <script src="script.js"></script>
 </body>
