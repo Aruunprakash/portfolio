@@ -128,7 +128,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Scroll animation for reveals (Fade in sections on scroll)
+    // Scroll animation for reveals — items cascade in ("flow") rather
+    // than all popping in at once. Elements sharing a parent (e.g. the
+    // 3 experience cards, or a row of skill tags) get an incrementing
+    // delay so they animate in sequence as their section enters view.
     const revealOptions = {
         root: null,
         rootMargin: '0px',
@@ -139,14 +142,42 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('revealed');
+                revealObserver.unobserve(entry.target);
             }
         });
     }, revealOptions);
 
-    const revealElements = document.querySelectorAll('.experience-card, .project-card, .publication-box, .cert-item, .edu-item, .skills-category, .contact-left-info');
+    const revealElements = document.querySelectorAll('.experience-card, .project-card, .publication-box, .cert-item, .edu-item, .skills-category, .contact-left-info, .toc-item, .skill-tag, .social-square-btn');
 
+    const staggerCounters = new Map();
     revealElements.forEach(el => {
         el.classList.add('reveal-item');
+
+        // Count position among reveal-items sharing the same parent,
+        // capping the delay so long lists (like skill tags) don't take
+        // forever to finish cascading in.
+        const parent = el.parentElement;
+        const position = staggerCounters.get(parent) || 0;
+        staggerCounters.set(parent, position + 1);
+        const delayMs = Math.min(position * 70, 420);
+        el.style.setProperty('--reveal-delay', `${delayMs}ms`);
+
         revealObserver.observe(el);
+    });
+
+    // Hero load-in: elements start hidden (see CSS) and are sequenced
+    // one-by-one via staggered --hero-delay values, triggered once the
+    // browser has painted the hidden state (double rAF avoids a flash
+    // of fully-visible content before the animation can run).
+    const heroLoadItems = document.querySelectorAll('.hero-load-item');
+    const heroDelays = [0, 150, 350, 550, 900, 1050, 1300, 1400, 1500];
+    heroLoadItems.forEach((el, i) => {
+        el.style.setProperty('--hero-delay', `${heroDelays[i] ?? i * 150}ms`);
+    });
+
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            document.body.classList.add('hero-loaded');
+        });
     });
 });

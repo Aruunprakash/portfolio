@@ -225,16 +225,102 @@ body::after {
     font-weight: 400;
 }
 
-/* Progressive Reveals (Preventing Blank States) */
+/* Progressive Reveals (Preventing Blank States)
+   Items fade + pop in with a slight overshoot on transform for energy,
+   and --reveal-delay (set per-element in JS based on sibling position)
+   makes groups — cards, skill tags, cert items — cascade in sequence
+   instead of appearing all at once. */
 body.js-active .reveal-item {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: translateY(28px) scale(0.96);
+    transition:
+        opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition-delay: var(--reveal-delay, 0ms);
 }
 
 body.js-active .reveal-item.revealed {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+}
+
+/* ==================== HERO LOAD-IN SEQUENCE ====================
+   On first paint, hero elements are hidden. Once script.js confirms
+   the hidden state has rendered, it adds .hero-loaded to <body>,
+   which fires each element's entrance animation at its own
+   --hero-delay — producing a one-by-one sequence instead of the
+   whole hero appearing in a single flash. */
+body.js-active .hero-load-item {
+    opacity: 0;
+}
+
+body.js-active.hero-loaded .hero-load-item {
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    animation-delay: var(--hero-delay, 0ms);
+}
+
+body.js-active.hero-loaded .hero-header .hero-load-item {
+    animation-name: heroFadeDown;
+    animation-duration: 0.7s;
+}
+
+body.js-active.hero-loaded .logo-box.hero-load-item {
+    animation-name: heroPopIn;
+    animation-duration: 0.8s;
+}
+
+body.js-active.hero-loaded .tilted-badge.hero-load-item {
+    animation-name: heroBadgePop;
+    animation-duration: 0.6s;
+    animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+body.js-active.hero-loaded h1.hero-load-item {
+    animation-name: heroFadeUp;
+    animation-duration: 0.7s;
+}
+
+body.js-active.hero-loaded .logo-box-footer span.hero-load-item {
+    animation-name: heroFadeUp;
+    animation-duration: 0.6s;
+}
+
+body.js-active.hero-loaded .footer-symbol.hero-load-item {
+    animation-name: heroPopIn;
+    animation-duration: 0.5s;
+}
+
+@keyframes heroFadeDown {
+    from { opacity: 0; transform: translateY(-14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroPopIn {
+    from { opacity: 0; transform: scale(0.85); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes heroBadgePop {
+    from { opacity: 0; transform: rotate(6deg) scale(0.5); }
+    to   { opacity: 1; transform: rotate(-6deg) scale(1); }
+}
+
+/* Respect users who've asked for reduced motion: skip straight to the
+   end state instead of animating. */
+@media (prefers-reduced-motion: reduce) {
+    body.js-active .reveal-item,
+    body.js-active .hero-load-item {
+        transition: none !important;
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
 }
 
 /* ==================== SLIDE 1: HERO COVER ==================== */
