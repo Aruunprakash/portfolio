@@ -1030,6 +1030,14 @@ body.js-active .reveal-item.revealed {
     text-align: left;
 }
 
+/* Contact form column was removed in favor of a single mailto CTA;
+   this makes the remaining column take the full width and sets a
+   comfortable reading max-width instead of stretching edge to edge. */
+.contact-split-grid-single {
+    grid-template-columns: 1fr;
+    max-width: 640px;
+}
+
 .contact-left-info {
     display: flex;
     flex-direction: column;
@@ -1078,32 +1086,51 @@ body.js-active .reveal-item.revealed {
     letter-spacing: 0.05em;
 }
 
-.contact-email-dashed-box {
+/* Primary "email me" call-to-action — a real mailto: link styled as a
+   big dashed button, replacing the old fake contact form entirely. */
+.contact-email-cta {
     display: inline-flex;
     align-items: center;
     gap: 1rem;
     border: 2px dashed rgba(255, 255, 255, 0.4);
-    padding: 0.8rem 1.5rem;
+    padding: 1.1rem 1.6rem;
     align-self: flex-start;
+    width: fit-content;
+    max-width: 100%;
+    text-decoration: none;
+    color: var(--text-light);
     transition: var(--transition-smooth);
 }
 
-.contact-email-dashed-box:hover {
+.contact-email-cta:hover {
+    border-style: solid;
     border-color: var(--text-light);
     background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
 }
 
-.email-dashed-icon {
+.contact-email-cta .email-dashed-icon {
     stroke: var(--text-light);
+    flex-shrink: 0;
 }
 
-.dashed-box-email-link {
+.contact-email-cta span:not(.contact-email-cta-arrow) {
     font-family: var(--font-body);
     font-weight: 800;
-    font-size: 1.05rem;
-    color: var(--text-light);
-    text-decoration: none;
+    font-size: 1.1rem;
     letter-spacing: 0.02em;
+}
+
+.contact-email-cta-arrow {
+    margin-left: 0.5rem;
+    font-size: 1.2rem;
+    opacity: 0.8;
+    transition: var(--transition-smooth);
+}
+
+.contact-email-cta:hover .contact-email-cta-arrow {
+    transform: translate(3px, -3px);
+    opacity: 1;
 }
 
 .contact-social-squares {
@@ -1140,77 +1167,6 @@ body.js-active .reveal-item.revealed {
 
 .social-square-btn:hover span {
     color: var(--primary-blue);
-}
-
-/* Right Column Form Box */
-.contact-right-form {
-    background: rgba(255, 255, 255, 0.05);
-    border: var(--border-thickness) solid rgba(255, 255, 255, 0.2);
-    padding: 2.5rem;
-    position: relative;
-    z-index: 3;
-}
-
-.contact-form-box {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.form-input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.form-input-label {
-    font-family: var(--font-body);
-    font-weight: 800;
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.8);
-    letter-spacing: 0.1em;
-}
-
-.form-text-input, .form-textarea-input {
-    background: rgba(0, 32, 245, 0.1);
-    border: var(--border-thickness) solid rgba(255, 255, 255, 0.3);
-    padding: 1rem 1.2rem;
-    color: var(--text-light);
-    font-family: var(--font-body);
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: var(--transition-smooth);
-}
-
-.form-text-input::placeholder, .form-textarea-input::placeholder {
-    color: rgba(255, 255, 255, 0.35);
-}
-
-.form-text-input:focus, .form-textarea-input:focus {
-    border-color: var(--text-light);
-    background: rgba(0, 32, 245, 0.4);
-    outline: none;
-}
-
-.form-submit-teal-btn {
-    background-color: var(--text-light);
-    color: var(--primary-blue);
-    border: none;
-    padding: 1.1rem;
-    font-family: var(--font-body);
-    font-weight: 800;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    cursor: pointer;
-    transition: var(--transition-smooth);
-    margin-top: 0.5rem;
-}
-
-.form-submit-teal-btn:hover {
-    background-color: #000000;
-    color: var(--text-light);
-    transform: translateY(-2px);
 }
 
 /* Floating Scroll to Top Circular Button */
@@ -1254,47 +1210,47 @@ body.js-active .reveal-item.revealed {
         --spacing-lg: 3rem;
         --spacing-xl: 4rem;
     }
-    
+
     .toc-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
-    
+
     .toc-diagram-container {
         height: 380px;
         order: 2;
     }
-    
+
     .profile-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
-    
+
     .profile-left {
         max-width: 500px;
         margin: 0 auto;
     }
-    
+
     .experience-container {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-    
+
     .achievements-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
-    
+
     .edu-skills-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
-    
+
     .contact-split-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
-    
+
     .scroll-top-circular-btn {
         right: 2rem;
     }
@@ -1307,21 +1263,21 @@ body.js-active .reveal-item.revealed {
         --spacing-lg: 2.2rem;
         --spacing-xl: 3rem;
     }
-    
+
     .custom-cursor {
         display: none; /* Hide custom cursor on touch devices */
     }
-    
+
     .sticky-nav {
         padding: 0.8rem var(--spacing-md);
     }
-    
+
     .nav-container {
         flex-direction: column;
         gap: 0.4rem;
         align-items: center;
     }
-    
+
     .nav-links {
         display: flex;
         overflow-x: auto;
@@ -1332,33 +1288,33 @@ body.js-active .reveal-item.revealed {
         gap: 1.2rem;
         scrollbar-width: none; /* Firefox */
     }
-    
+
     .nav-links::-webkit-scrollbar {
         display: none; /* Chrome/Safari */
     }
-    
+
     .nav-links li {
         flex: 0 0 auto;
     }
-    
+
     .nav-links a {
         font-size: 0.75rem;
     }
-    
+
     .hero-header {
         padding: 0 1.5rem;
     }
-    
+
     .logo-box {
         padding: 2.5rem 1.5rem 1.5rem;
     }
-    
+
     .tilted-badge {
         top: -1.8rem;
         font-size: 1.1rem;
         padding: 0.2rem 1.2rem;
     }
-    
+
     .oval-work {
         top: 15%;
         left: 10%;
@@ -1373,58 +1329,58 @@ body.js-active .reveal-item.revealed {
         bottom: 15%;
         left: 5%;
     }
-    
+
     .toc-oval-wrapper {
         padding: 1rem 2rem;
     }
-    
+
     .toc-oval-wrapper span {
         font-size: 1.2rem;
     }
-    
+
     .toc-number {
         font-size: 2rem;
         width: 45px;
     }
-    
+
     .toc-title {
         font-size: 1.15rem;
     }
-    
+
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 1.8rem;
     }
-    
+
     .project-card {
         padding: 1.8rem;
         min-height: auto;
     }
-    
+
     .pub-title {
         font-size: 1.8rem;
     }
-    
+
     .publication-box {
         padding: 1.8rem;
     }
-    
+
     .edu-timeline {
         padding-left: 1.5rem;
     }
-    
+
     .edu-dot {
         left: -2.2rem;
         width: 1rem;
         height: 1rem;
     }
-    
+
     .contact-left-info {
         gap: 1.5rem;
     }
-    
-    .contact-right-form {
-        padding: 1.5rem;
+
+    .contact-email-cta {
+        padding: 0.9rem 1.2rem;
     }
     
     .scroll-top-circular-btn {

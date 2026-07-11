@@ -104,27 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Contact Form Submission Handler
-    const contactForm = document.getElementById('contact-form-element');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const submitBtn = contactForm.querySelector('.form-submit-teal-btn');
-            const originalText = submitBtn.textContent;
-            
-            submitBtn.textContent = 'SENDING...';
-            submitBtn.disabled = true;
-            
-            // Simulate message sending
-            setTimeout(() => {
-                alert('Thank you, Arun M P has received your message!');
-                contactForm.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 1200);
-        });
-    }
+    // Note: Contact now uses a direct mailto: link (see index.html #contact),
+    // so no JS is needed to "send" anything — the visitor's own email client
+    // handles it. The old fake form-submission handler has been removed.
 
     // Table of Contents SVG Interaction
     const ovals = document.querySelectorAll('.toc-oval-wrapper');
@@ -137,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 path.style.animationDuration = '8s';
                 path.style.strokeWidth = '3.5px';
             });
-            
+
             oval.addEventListener('mouseleave', () => {
                 // Revert to original slow dash
                 path.style.animationDuration = '30s';
@@ -161,8 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, revealOptions);
 
-    const revealElements = document.querySelectorAll('.experience-card, .project-card, .publication-box, .cert-item, .edu-item, .skills-category, .contact-left-info, .contact-right-form');
-    
+    const revealElements = document.querySelectorAll('.experience-card, .project-card, .publication-box, .cert-item, .edu-item, .skills-category, .contact-left-info');
+
     revealElements.forEach(el => {
         el.classList.add('reveal-item');
         revealObserver.observe(el);
