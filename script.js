@@ -10,72 +10,6 @@ window.addEventListener('load', () => {
         coverSection.scrollIntoView({ behavior: 'auto', block: 'start' });
     }
 });
-<<<<<<< HEAD
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Force immediate scroll position reset on load
-    window.scrollTo(0, 0);
-
-    // Progressive Reveal Enhancement: Add active class to body
-    // This activates CSS hidden states for scroll reveals, guaranteeing content visibility even if JS fails
-    document.body.classList.add('js-active');
-
-    // Custom Cursor Logic
-    const cursor = document.querySelector('.custom-cursor');
-    
-    if (cursor) {
-        // Track mouse position
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        // Hover expansions for links, buttons, and ovals
-        const hoverables = document.querySelectorAll('a, button, .toc-oval-wrapper, .experience-card, .project-card, .skill-tag, .social-square-btn');
-        hoverables.forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-    }
-
-    // Sticky Navigation Dark Mode & Active Links Observer
-    const nav = document.getElementById('main-nav');
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-links a');
-    
-    // Intersection Observer for detecting visible sections
-    const observerOptions = {
-        root: null,
-        rootMargin: '-20% 0px -60% 0px', // Trigger when section occupies the sweet spot of viewport
-        threshold: 0
-    };
-
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('id');
-                
-                // 1. Manage Navigation Active State Highlight
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${id}`) {
-                        link.classList.add('active');
-                    }
-                });
-
-                // 2. Manage Sticky Nav Color Theme (Dark Mode on Blue Backgrounds)
-                if (id === 'cover' || id === 'contact') {
-                    nav.classList.add('dark-mode');
-                } else {
-                    nav.classList.remove('dark-mode');
-                }
-            }
-        });
-    }, observerOptions);
-
-    sections.forEach(section => sectionObserver.observe(section));
-
-=======
 
 document.addEventListener('DOMContentLoaded', () => {
     // Force immediate scroll position reset on load
@@ -140,18 +74,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sections.forEach(section => sectionObserver.observe(section));
 
->>>>>>> 43d6c66 (update on transition)
     // Smooth Scroll for Navigation Links
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const targetId = link.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-<<<<<<< HEAD
-            
-=======
 
->>>>>>> 43d6c66 (update on transition)
             if (targetSection) {
                 targetSection.scrollIntoView({
                     behavior: 'smooth',
