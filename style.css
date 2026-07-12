@@ -6,29 +6,17 @@
     --bg-dark: #0020f5;
     --text-dark: #111111;
     --text-light: #ffffff;
-<<<<<<< HEAD
-    
-    --font-title: 'Bebas Neue', sans-serif;
-    --font-serif: 'Instrument Serif', serif;
-    --font-body: 'Plus Jakarta Sans', sans-serif;
-    
-=======
 
     --font-title: 'Bebas Neue', sans-serif;
     --font-serif: 'Instrument Serif', serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
 
->>>>>>> 43d6c66 (update on transition)
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 2rem;
     --spacing-lg: 4rem;
     --spacing-xl: 6rem;
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> 43d6c66 (update on transition)
     --border-thickness: 2px;
     --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -346,7 +334,7 @@ body.js-active.hero-loaded .footer-symbol.hero-load-item {
 
 .hero-header {
     position: absolute;
-    top: 2rem;
+    top: 6rem;
     left: 0;
     width: 100%;
     padding: 0 3rem;
@@ -1354,6 +1342,7 @@ body.js-active.hero-loaded .footer-symbol.hero-load-item {
     }
 
     .hero-header {
+        top: 7.5rem;
         padding: 0 1.5rem;
     }
 
@@ -1434,11 +1423,7 @@ body.js-active.hero-loaded .footer-symbol.hero-load-item {
     .contact-email-cta {
         padding: 0.9rem 1.2rem;
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> 43d6c66 (update on transition)
     .scroll-top-circular-btn {
         position: static;
         margin: 2rem auto 0;
