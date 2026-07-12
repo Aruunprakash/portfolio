@@ -260,11 +260,6 @@ body.js-active.hero-loaded .hero-load-item {
     animation-delay: var(--hero-delay, 0ms);
 }
 
-body.js-active.hero-loaded .hero-header .hero-load-item {
-    animation-name: heroFadeDown;
-    animation-duration: 0.7s;
-}
-
 body.js-active.hero-loaded .logo-box.hero-load-item {
     animation-name: heroPopIn;
     animation-duration: 0.8s;
@@ -289,11 +284,6 @@ body.js-active.hero-loaded .logo-box-footer span.hero-load-item {
 body.js-active.hero-loaded .footer-symbol.hero-load-item {
     animation-name: heroPopIn;
     animation-duration: 0.5s;
-}
-
-@keyframes heroFadeDown {
-    from { opacity: 0; transform: translateY(-14px); }
-    to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes heroFadeUp {
@@ -330,26 +320,6 @@ body.js-active.hero-loaded .footer-symbol.hero-load-item {
     border-bottom: none;
     padding: 0;
     overflow: hidden;
-}
-
-.hero-header {
-    position: absolute;
-    top: 6rem;
-    left: 0;
-    width: 100%;
-    padding: 0 3rem;
-    display: flex;
-    justify-content: space-between;
-    font-family: var(--font-body);
-    font-weight: 800;
-    font-size: 0.9rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    z-index: 10;
-}
-
-.hero-header span {
-    display: inline-block;
 }
 
 .hero-center {
@@ -1339,11 +1309,6 @@ body.js-active.hero-loaded .footer-symbol.hero-load-item {
 
     .nav-links a {
         font-size: 0.75rem;
-    }
-
-    .hero-header {
-        top: 7.5rem;
-        padding: 0 1.5rem;
     }
 
     .logo-box {
