@@ -876,11 +876,18 @@ body.js-active.hero-loaded .footer-symbol.hero-load-item {
     color: rgba(0, 32, 245, 0.8);
 }
 
-/* ==================== SLIDE 7: EDUCATION & SKILLS ==================== */
+/* ==================== SLIDE 7: TECH STACK ==================== */
 .edu-skills-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-lg);
+}
+
+/* Full-width single-column layout used now that the education
+   timeline column has been removed — skills expand to fill the
+   whole section instead of being squeezed into half the width. */
+.edu-skills-grid-single {
+    grid-template-columns: 1fr;
 }
 
 .edu-timeline {
@@ -941,7 +948,14 @@ body.js-active.hero-loaded .footer-symbol.hero-load-item {
 .skills-category-group {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 2.5rem;
+}
+
+/* In the single-column full-width layout, each category (Programming,
+   Libraries & Tools, Languages) becomes its own row so tags have the
+   full section width to wrap across, rather than a cramped half-column. */
+.edu-skills-grid-single .skills-category-group {
+    gap: 3rem;
 }
 
 .skills-category h3 {
@@ -953,10 +967,18 @@ body.js-active.hero-loaded .footer-symbol.hero-load-item {
     margin-bottom: 1rem;
 }
 
+.edu-skills-grid-single .skills-category h3 {
+    font-size: 2.4rem;
+}
+
 .skills-container {
     display: flex;
     flex-wrap: wrap;
     gap: 0.6rem;
+}
+
+.edu-skills-grid-single .skills-container {
+    gap: 1rem;
 }
 
 .skill-tag {
@@ -972,10 +994,20 @@ body.js-active.hero-loaded .footer-symbol.hero-load-item {
     background: transparent;
 }
 
+.edu-skills-grid-single .skill-tag {
+    padding: 0.9rem 1.8rem;
+    font-size: 1.05rem;
+    box-shadow: 4px 4px 0px var(--primary-blue);
+}
+
 .skill-tag:hover {
     background-color: var(--primary-blue);
     color: var(--text-light);
     transform: translateY(-2px);
+}
+
+.edu-skills-grid-single .skill-tag:hover {
+    box-shadow: 6px 6px 0px #000;
 }
 
 /* ==================== SLIDE 8: CONTACT SECTION ==================== */
