@@ -1,5 +1,4 @@
-/* Fonts are loaded via <link> in index.html <head> (preconnect + stylesheet)
-   for faster, non-serialized fetching — see the note there. */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
     --primary-blue: #0020f5;
@@ -76,106 +75,45 @@ body::after {
     color: var(--text-light);
 }
 
-/* Floating logo (the bar itself is gone — only ARUN M P remains).
-   The container is transparent and lets clicks pass through to the
-   page; only the logo stays interactive. */
+/* Sticky Navigation Bar */
 .sticky-nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 1.4rem var(--spacing-md);
-    background: transparent;
-    border-bottom: none;
-    pointer-events: none;
+    padding: 1.2rem var(--spacing-md);
+    background: rgba(235, 235, 235, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: var(--border-thickness) solid var(--primary-blue);
     transition: var(--transition-smooth);
+}
+
+.sticky-nav.dark-mode {
+    background: rgba(0, 32, 245, 0.85);
+    border-bottom: var(--border-thickness) solid var(--text-light);
 }
 
 .nav-container {
     max-width: 1400px;
     margin: 0 auto;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
 }
 
-/* --- Glass / lens logo -------------------------------------------------
-   The letters are cut from a translucent tinted gradient (the "glass
-   body"), rimmed with a bright top highlight and a soft cast shadow for
-   depth, edged with a faint prism fringe (chromatic aberration), and lit
-   by a specular glint that sweeps across on a loop. */
 .nav-logo {
-    position: relative;
-    display: inline-block;
-    pointer-events: auto;
     font-family: var(--font-title);
-    font-size: 1.9rem;
-    letter-spacing: 0.06em;
+    font-size: 1.8rem;
+    color: var(--primary-blue);
     text-decoration: none;
-    color: transparent;
-    background: linear-gradient(160deg,
-        rgba(0, 32, 245, 0.92) 0%,
-        rgba(0, 32, 245, 0.4) 48%,
-        rgba(0, 32, 245, 0.78) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    /* prism fringe on the glass edges */
-    text-shadow:
-        -0.6px 0 0 rgba(0, 200, 255, 0.35),
-        0.6px 0 0 rgba(255, 0, 150, 0.28);
-    /* bright rim + soft refracted drop shadow = a lens sitting on the page */
-    filter:
-        drop-shadow(0 1px 0 rgba(255, 255, 255, 0.65))
-        drop-shadow(0 -1px 1px rgba(0, 0, 0, 0.15))
-        drop-shadow(0 4px 10px rgba(0, 32, 245, 0.3));
+    letter-spacing: 0.05em;
     transition: var(--transition-smooth);
 }
 
-/* Moving specular highlight — the glint of light across glass. */
-.nav-logo::after {
-    content: attr(data-text);
-    position: absolute;
-    inset: 0;
-    color: transparent;
-    background: linear-gradient(110deg,
-        transparent 32%,
-        rgba(255, 255, 255, 0.9) 48%,
-        rgba(255, 255, 255, 0.4) 52%,
-        transparent 68%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 250% 100%;
-    background-position: 150% 0;
-    animation: navGlassGlint 5s ease-in-out infinite;
-    pointer-events: none;
-}
-
-@keyframes navGlassGlint {
-    0%, 100% { background-position: 150% 0; }
-    55%      { background-position: -60% 0; }
-}
-
-/* Over the blue sections (cover / contact) the glass turns frosted-white
-   so it stays legible against the deep blue. */
 .sticky-nav.dark-mode .nav-logo {
-    background: linear-gradient(160deg,
-        rgba(255, 255, 255, 0.95) 0%,
-        rgba(255, 255, 255, 0.4) 50%,
-        rgba(255, 255, 255, 0.75) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    filter:
-        drop-shadow(0 1px 0 rgba(255, 255, 255, 0.7))
-        drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .nav-logo::after {
-        animation: none;
-    }
+    color: var(--text-light);
 }
 
 .nav-links {
@@ -279,36 +217,6 @@ body::after {
     line-height: 0.9;
     margin-bottom: var(--spacing-lg);
     text-transform: uppercase;
-}
-
-/* Editorial eyebrow / kicker sitting above each section title. */
-.section-kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    font-family: var(--font-body);
-    font-weight: 800;
-    font-size: 0.78rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--primary-blue);
-    margin-bottom: 1.3rem;
-}
-
-.section-kicker::before {
-    content: "";
-    width: 2.4rem;
-    height: 2px;
-    background: var(--primary-blue);
-}
-
-/* On the blue contact section the kicker flips to white. */
-.contact .section-kicker {
-    color: var(--text-light);
-}
-
-.contact .section-kicker::before {
-    background: var(--text-light);
 }
 
 .serif-italic {
@@ -443,53 +351,6 @@ body.js-active.hero-loaded .footer-symbol.hero-load-item {
     line-height: 0.85;
     letter-spacing: 0.02em;
     margin: 0;
-}
-
-/* Slot-machine reveal: script.js splits PORTFOLIO into per-letter
-   "reels". Each reel is a 1em-tall window over a vertical strip of
-   random letters ending in the real letter; on load the strips roll
-   down and snap into place left-to-right, like a slot machine. If JS
-   is off, the plain word shows (see the fallback text in the h1). */
-.hero-slot {
-    display: inline-flex;
-    justify-content: center;
-    align-items: flex-end;
-    line-height: 1;
-}
-
-.slot-reel {
-    position: relative;
-    display: inline-block;
-    height: 1em;
-    line-height: 1;
-    overflow: hidden;
-    vertical-align: bottom;
-}
-
-/* Invisible copy of the real letter — fixes each reel's width to its
-   own glyph so the settled word keeps natural letter spacing. */
-.slot-reel .slot-sizer {
-    display: inline-block;
-    visibility: hidden;
-}
-
-.slot-strip {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translate(-50%, 0);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    will-change: transform;
-}
-
-.slot-strip > span {
-    height: 1em;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .tilted-badge {
@@ -676,8 +537,7 @@ body.js-active.hero-loaded .footer-symbol.hero-load-item {
     font-family: var(--font-serif);
     font-style: italic;
     font-size: 0.95rem;
-    /* 0.85 keeps the softer look but clears WCAG AA (≥4.5:1) contrast. */
-    color: rgba(0, 32, 245, 0.85);
+    color: rgba(0, 32, 245, 0.7);
     margin-top: 0.1rem;
 }
 
@@ -1291,13 +1151,6 @@ body.js-active.hero-loaded .footer-symbol.hero-load-item {
     transform: translateY(-3px);
 }
 
-/* Confirmation state after clicking (address copied to clipboard). */
-.contact-email-cta.copied {
-    border-style: solid;
-    border-color: #00f5d4;
-    background: rgba(0, 245, 212, 0.12);
-}
-
 .contact-email-cta .email-dashed-icon {
     stroke: var(--text-light);
     flex-shrink: 0;
@@ -1339,24 +1192,23 @@ body.js-active.hero-loaded .footer-symbol.hero-load-item {
     text-decoration: none;
     transition: var(--transition-smooth);
     background: transparent;
-    color: var(--text-light);
 }
 
-.social-square-btn svg {
-    width: 22px;
-    height: 22px;
-    fill: currentColor;
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+.social-square-btn span {
+    font-family: var(--font-body);
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    letter-spacing: 0.05em;
 }
 
 .social-square-btn:hover {
     background-color: var(--text-light);
-    color: var(--primary-blue);
     transform: translateY(-4px);
 }
 
-.social-square-btn:hover svg {
-    transform: scale(1.15);
+.social-square-btn:hover span {
+    color: var(--primary-blue);
 }
 
 /* Floating Scroll to Top Circular Button */
@@ -1572,340 +1424,5 @@ body.js-active.hero-loaded .footer-symbol.hero-load-item {
     .scroll-top-circular-btn {
         position: static;
         margin: 2rem auto 0;
-    }
-}
-
-/* ==================== ADDED MOTION & INTERACTION ==================== */
-
-/* --- Scroll progress bar (top of viewport) --- */
-.scroll-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    width: 0;
-    background: var(--primary-blue);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.55);
-    z-index: 10000;
-    will-change: width;
-}
-
-/* --- Animated blueprint grid drifting behind the hero --- */
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background-image:
-        linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-    background-size: 46px 46px;
-    -webkit-mask: radial-gradient(ellipse at center, #000 25%, transparent 78%);
-    mask: radial-gradient(ellipse at center, #000 25%, transparent 78%);
-    animation: heroGridDrift 20s linear infinite;
-}
-
-@keyframes heroGridDrift {
-    to { background-position: 46px 46px, 46px 46px; }
-}
-
-/* keep the hero content above the grid */
-.hero-center {
-    z-index: 1;
-}
-
-/* --- Scrolling keyword marquee band --- */
-.marquee-band {
-    background: var(--primary-blue);
-    color: var(--text-light);
-    overflow: hidden;
-    white-space: nowrap;
-    padding: 0.85rem 0;
-    border-top: 3px solid #000;
-    border-bottom: 3px solid #000;
-}
-
-.marquee-track {
-    display: inline-flex;
-    animation: marquee 24s linear infinite;
-}
-
-.marquee-track span {
-    font-family: var(--font-title);
-    font-size: clamp(1.4rem, 2.6vw, 2rem);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-}
-
-.marquee-band:hover .marquee-track {
-    animation-play-state: paused;
-}
-
-@keyframes marquee {
-    to { transform: translateX(-50%); }
-}
-
-/* --- Section titles wipe in on scroll (JS toggles .title-in) --- */
-body.js-active .section-title {
-    clip-path: inset(0 100% 0 0);
-    transition: clip-path 0.85s cubic-bezier(0.65, 0, 0.35, 1);
-}
-
-body.js-active .section-title.title-in {
-    clip-path: inset(0 -0.15em 0 0);
-}
-
-/* --- Animated stat counters in the profile --- */
-.profile-stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    margin-top: 0.5rem;
-    padding-top: 1.6rem;
-    border-top: var(--border-thickness) solid var(--primary-blue);
-}
-
-.stat {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-}
-
-.stat-num {
-    font-family: var(--font-title);
-    font-size: clamp(2.4rem, 4.5vw, 3.4rem);
-    color: var(--primary-blue);
-    line-height: 0.9;
-    font-variant-numeric: tabular-nums;
-}
-
-.stat-label {
-    font-family: var(--font-body);
-    font-weight: 800;
-    font-size: 0.68rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--text-dark);
-}
-
-/* --- 3D tilt cards: give them a base for smooth inline transforms --- */
-.experience-card,
-.project-card {
-    will-change: transform;
-}
-
-@media (max-width: 768px) {
-    .profile-stats {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem 1rem;
-    }
-}
-
-/* Respect reduced-motion: freeze the decorative loops. */
-@media (prefers-reduced-motion: reduce) {
-    .hero::before,
-    .marquee-track {
-        animation: none;
-    }
-
-    body.js-active .section-title {
-        clip-path: none;
-        transition: none;
-    }
-}
-
-/* ==================== BATCH 2: MORE MOTION ==================== */
-
-/* --- Rotating role text in the hero footer --- */
-.logo-box-footer {
-    perspective: 500px;
-}
-
-.hero-role {
-    display: inline-block;
-    min-width: 15ch;
-    text-align: left;
-    transform-origin: center bottom;
-    transition: transform 0.32s ease, opacity 0.32s ease;
-    backface-visibility: hidden;
-}
-
-.hero-role.role-out {
-    opacity: 0;
-    transform: translateY(-6px) rotateX(70deg);
-}
-
-/* --- Vertical section dot navigator --- */
-.dot-nav {
-    position: fixed;
-    right: 1.4rem;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
-    align-items: center;
-}
-
-.dot-nav .dot {
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    border: 2px solid var(--primary-blue);
-    background: transparent;
-    position: relative;
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-                background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.dot-nav .dot:hover {
-    transform: scale(1.4);
-    background: var(--primary-blue);
-}
-
-.dot-nav .dot.active {
-    background: var(--primary-blue);
-    transform: scale(1.3);
-}
-
-.dot-nav .dot::after {
-    content: attr(data-label);
-    position: absolute;
-    right: 22px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--primary-blue);
-    color: #fff;
-    font-family: var(--font-body);
-    font-weight: 800;
-    font-size: 0.62rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    padding: 0.25rem 0.6rem;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s ease;
-}
-
-.dot-nav .dot:hover::after {
-    opacity: 1;
-}
-
-/* On the blue sections (cover / contact) the dots flip to white. */
-.dot-nav.on-dark .dot {
-    border-color: var(--text-light);
-}
-
-.dot-nav.on-dark .dot:hover,
-.dot-nav.on-dark .dot.active {
-    background: var(--text-light);
-}
-
-.dot-nav.on-dark .dot::after {
-    background: var(--text-light);
-    color: var(--primary-blue);
-}
-
-/* --- Project card image previews --- */
-.project-thumb {
-    height: 140px;
-    margin-bottom: 1.6rem;
-    border: var(--border-thickness) solid var(--primary-blue);
-    overflow: hidden;
-    position: relative;
-    background: linear-gradient(135deg, var(--primary-blue), #000c6b);
-}
-
-.project-thumb-art {
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='160' viewBox='0 0 400 160' preserveAspectRatio='none'%3E%3Cg stroke='rgba(255,255,255,0.16)' stroke-width='1'%3E%3Cpath d='M0 40 H400 M0 80 H400 M0 120 H400 M80 0 V160 M160 0 V160 M240 0 V160 M320 0 V160'/%3E%3C/g%3E%3Cpolyline points='0,132 60,112 120,120 180,72 240,88 300,42 400,20' fill='none' stroke='%23ffffff' stroke-width='3'/%3E%3Cg fill='%23ffffff'%3E%3Ccircle cx='120' cy='120' r='4'/%3E%3Ccircle cx='180' cy='72' r='4'/%3E%3Ccircle cx='300' cy='42' r='4'/%3E%3C/g%3E%3C/svg%3E");
-    background-size: cover;
-    background-position: center;
-    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.project-card:hover .project-thumb-art {
-    transform: scale(1.14);
-}
-
-/* subtle per-card variety in the thumbnail wash */
-.project-card:nth-child(2) .project-thumb { background: linear-gradient(135deg, #0020f5, #000); }
-.project-card:nth-child(3) .project-thumb { background: linear-gradient(60deg, #0018c4, #0020f5); }
-.project-card:nth-child(4) .project-thumb { background: linear-gradient(210deg, #0020f5, #001a86); }
-.project-card:nth-child(5) .project-thumb { background: linear-gradient(120deg, #000c6b, #0020f5); }
-
-/* --- Live Calicut clock (contact section) --- */
-.contact-clock {
-    align-self: flex-start;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    border-left: 3px solid #00f5d4;
-    padding-left: 1rem;
-}
-
-.clock-label {
-    font-family: var(--font-body);
-    font-weight: 800;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: rgba(255, 255, 255, 0.75);
-}
-
-.clock-time {
-    font-family: var(--font-title);
-    font-size: 2.1rem;
-    letter-spacing: 0.05em;
-    color: var(--text-light);
-    line-height: 1;
-    font-variant-numeric: tabular-nums;
-}
-
-/* --- Magnetic buttons: smooth return when the cursor leaves --- */
-.contact-email-cta,
-.social-square-btn {
-    will-change: transform;
-}
-
-/* --- Confetti pieces (spawned by JS on the email CTA) --- */
-.confetti-piece {
-    position: fixed;
-    width: 9px;
-    height: 15px;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 10001;
-    will-change: transform, opacity;
-}
-
-/* --- Scroll-snap slide-deck feel --- */
-html {
-    scroll-snap-type: y proximity;
-}
-
-.section {
-    scroll-snap-align: start;
-}
-
-/* Hide the dot navigator where the horizontal nav already serves. */
-@media (max-width: 900px) {
-    .dot-nav {
-        display: none;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-snap-type: none;
-    }
-
-    .hero-role {
-        transition: none;
     }
 }
