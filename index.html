@@ -6,26 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arun M P | Data Science Portfolio</title>
     <meta name="description" content="Portfolio of Arun M P, a Data Science and AI/ML fresher showcasing analytics projects, internships, and research publications.">
+    <meta name="author" content="Arun M P">
+    <meta name="theme-color" content="#0020f5">
+    <meta name="color-scheme" content="light">
+
+    <!-- Open Graph / social preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Arun M P | Data Science Portfolio">
+    <meta property="og:description" content="Data Science & AI/ML fresher — analytics projects, internships, and research publications.">
+
+    <!-- Fonts: preconnect + direct stylesheet (faster than a CSS @import, which
+         forces the browser to download style.css before it even discovers the fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <!-- Scroll progress indicator -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
     <!-- Custom Cursor -->
     <div class="custom-cursor"></div>
 
-    <!-- Sticky Navigation Bar -->
+    <!-- Vertical section dot navigator -->
+    <nav class="dot-nav" id="dot-nav" aria-label="Section navigation">
+        <a href="#cover" class="dot" data-label="Cover" aria-label="Go to Cover"></a>
+        <a href="#toc" class="dot" data-label="Index" aria-label="Go to Index"></a>
+        <a href="#profile" class="dot" data-label="Profile" aria-label="Go to Profile"></a>
+        <a href="#experience" class="dot" data-label="Experience" aria-label="Go to Experience"></a>
+        <a href="#projects" class="dot" data-label="Projects" aria-label="Go to Projects"></a>
+        <a href="#achievements" class="dot" data-label="Research" aria-label="Go to Research"></a>
+        <a href="#education" class="dot" data-label="Tech Stack" aria-label="Go to Tech Stack"></a>
+        <a href="#contact" class="dot" data-label="Contact" aria-label="Go to Contact"></a>
+    </nav>
+
+    <!-- Floating logo (nav bar removed) -->
     <nav class="sticky-nav" id="main-nav">
         <div class="nav-container">
-            <a href="#cover" class="nav-logo">ARUN M P</a>
-            <ul class="nav-links">
-                <li><a href="#toc">Index</a></li>
-                <li><a href="#profile">Profile</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#achievements">Research</a></li>
-                <li><a href="#education">Tech Stack</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <a href="#cover" class="nav-logo" data-text="ARUN M P">ARUN M P</a>
         </div>
     </nav>
 
@@ -34,9 +55,9 @@
         <div class="hero-center">
             <div class="logo-box hero-load-item">
                 <div class="tilted-badge hero-load-item">DATA SCIENCE</div>
-                <h1 class="hero-load-item">PORTFOLIO</h1>
+                <h1 class="hero-load-item hero-slot">PORTFOLIO</h1>
                 <div class="logo-box-footer">
-                    <span class="hero-load-item">AI / ML FRESHER</span>
+                    <span class="hero-load-item hero-role" id="hero-role">AI / ML FRESHER</span>
                     <div class="footer-symbol hero-load-item"></div>
                     <span class="hero-load-item">CALICUT, INDIA</span>
                 </div>
@@ -44,24 +65,33 @@
         </div>
     </section>
 
+    <!-- Scrolling keyword marquee (decorative) -->
+    <div class="marquee-band" aria-hidden="true">
+        <div class="marquee-track">
+            <span>DATA SCIENCE&nbsp; &#10022; &nbsp;MACHINE LEARNING&nbsp; &#10022; &nbsp;PYTHON&nbsp; &#10022; &nbsp;DEEP LEARNING&nbsp; &#10022; &nbsp;PREDICTIVE MODELING&nbsp; &#10022; &nbsp;AI / ML&nbsp; &#10022; &nbsp;</span>
+            <span>DATA SCIENCE&nbsp; &#10022; &nbsp;MACHINE LEARNING&nbsp; &#10022; &nbsp;PYTHON&nbsp; &#10022; &nbsp;DEEP LEARNING&nbsp; &#10022; &nbsp;PREDICTIVE MODELING&nbsp; &#10022; &nbsp;AI / ML&nbsp; &#10022; &nbsp;</span>
+        </div>
+    </div>
+
     <!-- Slide 2: Table of Contents -->
     <section class="section toc" id="toc">
         <div class="section-content">
+            <span class="section-kicker">Index — What's Inside</span>
             <h2 class="section-title">TABLE OF <span class="serif-italic">CONTENT</span></h2>
             <div class="toc-grid">
                 <!-- SVG Diagram Column -->
                 <div class="toc-diagram-container">
-                    <svg class="toc-svg" viewBox="0 0 700 500" preserveAspectRatio="none">
+                    <svg class="toc-svg" viewBox="0 0 700 500" preserveAspectRatio="none" aria-hidden="true" focusable="false">
                         <path class="toc-path" d="M 230 80 C 500 80, 650 200, 580 250 C 500 300, 150 280, 180 425" />
                     </svg>
 
-                    <div class="toc-oval-wrapper oval-work" onclick="document.getElementById('experience').scrollIntoView({behavior: 'smooth'})">
+                    <div class="toc-oval-wrapper oval-work" role="button" tabindex="0" aria-label="Jump to Experience" onclick="document.getElementById('experience').scrollIntoView({behavior: 'smooth'})">
                         <span>ANALYZE</span>
                     </div>
-                    <div class="toc-oval-wrapper oval-debt" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+                    <div class="toc-oval-wrapper oval-debt" role="button" tabindex="0" aria-label="Jump to Projects" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
                         <span>PREDICT</span>
                     </div>
-                    <div class="toc-oval-wrapper oval-cry" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                    <div class="toc-oval-wrapper oval-cry" role="button" tabindex="0" aria-label="Jump to Contact" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
                         <span>REPEAT</span>
                     </div>
                 </div>
@@ -130,6 +160,7 @@
     <!-- Slide 3: About / Profile -->
     <section class="section profile" id="profile">
         <div class="section-content">
+            <span class="section-kicker">Section 01 — Who I Am</span>
             <h2 class="section-title">01 / <span class="serif-italic">PROFILE</span></h2>
             <div class="profile-grid">
                 <!-- Left Frame: Empty Photo Placeholder -->
@@ -138,7 +169,7 @@
                         <span>E-MAIL: <a href="mailto:aruunmp@gmail.com">aruunmp@gmail.com</a> // LINKEDIN: <a href="https://linkedin.com/in/aruunprakash" target="_blank" rel="noopener noreferrer">Arun M P</a></span>
                     </div>
                     <div class="profile-photo-container">
-                        <img src="assets/profile.jpg" alt="Arun M P" class="profile-photo-img">
+                        <img src="assets/profile.jpg" alt="Portrait of Arun M P" class="profile-photo-img" width="600" height="600" loading="lazy" decoding="async">
                     </div>
                 </div>
 
@@ -153,6 +184,26 @@
                     <p class="profile-desc">
                         My background specializes in developing scalable, high-impact data solutions, utilizing advanced statistical analysis, machine learning basics, and engineering adaptive cognitive systems.
                     </p>
+
+                    <!-- Animated stat counters (count up when scrolled into view) -->
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <span class="stat-num" data-count="5">5</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num" data-count="2">2</span>
+                            <span class="stat-label">Internships</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num" data-count="1">1</span>
+                            <span class="stat-label">Publication</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num" data-count="10" data-suffix="+">10+</span>
+                            <span class="stat-label">Tools &amp; Libraries</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -161,6 +212,7 @@
     <!-- Slide 4: Experience Detail -->
     <section class="section experience" id="experience">
         <div class="section-content">
+            <span class="section-kicker">Section 02 — Where I've Worked</span>
             <h2 class="section-title">02 / <span class="serif-italic">EXPERIENCE</span></h2>
             <div class="experience-container">
                 <!-- WizzyBox -->
@@ -203,10 +255,12 @@
     <!-- Slide 5: Projects Showcase -->
     <section class="section projects" id="projects">
         <div class="section-content">
+            <span class="section-kicker">Section 03 — What I've Built</span>
             <h2 class="section-title">03 / <span class="serif-italic">PROJECTS</span></h2>
             <div class="projects-grid">
                 <!-- Project 1 -->
                 <div class="project-card">
+                    <div class="project-thumb"><div class="project-thumb-art"></div></div>
                     <span class="project-num">01</span>
                     <div class="project-header">
                         <span class="project-date">Jun '26</span>
@@ -218,6 +272,7 @@
 
                 <!-- Project 2 -->
                 <div class="project-card">
+                    <div class="project-thumb"><div class="project-thumb-art"></div></div>
                     <span class="project-num">02</span>
                     <div class="project-header">
                         <span class="project-date">Jun '26</span>
@@ -229,6 +284,7 @@
 
                 <!-- Project 3 -->
                 <div class="project-card">
+                    <div class="project-thumb"><div class="project-thumb-art"></div></div>
                     <span class="project-num">03</span>
                     <div class="project-header">
                         <span class="project-date">Jan-Mar '26</span>
@@ -240,6 +296,7 @@
 
                 <!-- Project 4 -->
                 <div class="project-card">
+                    <div class="project-thumb"><div class="project-thumb-art"></div></div>
                     <span class="project-num">04</span>
                     <div class="project-header">
                         <span class="project-date">May '26</span>
@@ -251,6 +308,7 @@
 
                 <!-- Project 5 -->
                 <div class="project-card">
+                    <div class="project-thumb"><div class="project-thumb-art"></div></div>
                     <span class="project-num">05</span>
                     <div class="project-header">
                         <span class="project-date">Apr '26</span>
@@ -266,6 +324,7 @@
     <!-- Slide 6: Achievements (Publications & Certifications) -->
     <section class="section achievements" id="achievements">
         <div class="section-content">
+            <span class="section-kicker">Section 04 — Research &amp; Credentials</span>
             <h2 class="section-title">04 / <span class="serif-italic">ACHIEVEMENTS</span></h2>
             <div class="achievements-grid">
                 <!-- Publications -->
@@ -299,6 +358,7 @@
     <!-- Slide 7: Education & Skills -->
     <section class="section education" id="education">
         <div class="section-content">
+            <span class="section-kicker">Section 05 — Tools I Use</span>
             <h2 class="section-title">05 / <span class="serif-italic">TECH STACK</span></h2>
             <div class="edu-skills-grid edu-skills-grid-single">
                 <!-- Skills Categorized -->
@@ -346,13 +406,14 @@
     <section class="section contact" id="contact">
         <!-- SVG Background Metallic "06" -->
         <div class="contact-bg-number-container">
-            <svg class="contact-bg-number-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <svg class="contact-bg-number-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
                 <text x="50" y="52" dominant-baseline="middle" text-anchor="middle" class="contact-bg-text">06</text>
             </svg>
         </div>
 
         <div class="section-content contact-content-wrapper">
             <div class="contact-header-wrapper">
+                <span class="section-kicker">Section 06 — Let's Connect</span>
                 <h2 class="section-title contact-title">CONTACT</h2>
             </div>
 
@@ -368,9 +429,15 @@
                         <span class="badge-text">Available for opportunities & collaboration</span>
                     </div>
 
+                    <!-- Live local clock for Calicut (IST) -->
+                    <div class="contact-clock">
+                        <span class="clock-label">Local time · Calicut, IN</span>
+                        <span class="clock-time" id="calicut-clock">--:--:-- --</span>
+                    </div>
+
                     <!-- Primary CTA: opens the visitor's mail client directly -->
                     <a href="mailto:aruunmp@gmail.com?subject=Let's%20connect" class="contact-email-cta">
-                        <svg class="email-dashed-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="email-dashed-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                             <polyline points="22,6 12,13 2,6"/>
                         </svg>
@@ -379,19 +446,23 @@
                     </a>
 
                     <div class="contact-social-squares">
-                        <a href="https://linkedin.com/in/aruunprakash" class="social-square-btn" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-                            <span>IN</span>
+                        <a href="https://linkedin.com/in/aruunprakash" class="social-square-btn" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn profile">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                                <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>
+                            </svg>
                         </a>
-                        <a href="https://github.com/Aruunprakash" class="social-square-btn" target="_blank" rel="noopener noreferrer" title="GitHub">
-                            <span>GH</span>
+                        <a href="https://github.com/Aruunprakash" class="social-square-btn" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub profile">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                                <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22 0 1.61-.02 2.9-.02 3.29 0 .32.22.7.82.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/>
+                            </svg>
                         </a>
                     </div>
                 </div>
             </div>
 
             <!-- Float Scroll to Top Bottom Right -->
-            <button class="scroll-top-circular-btn" id="scroll-to-top-button" title="Go to top">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <button class="scroll-top-circular-btn" id="scroll-to-top-button" title="Go to top" aria-label="Go to top">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                     <polyline points="18 15 12 9 6 15"/>
                 </svg>
             </button>
